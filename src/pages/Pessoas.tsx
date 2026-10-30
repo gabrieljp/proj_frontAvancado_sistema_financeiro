@@ -1,6 +1,6 @@
 const Pessoas = () => {
     return (
-        <div>Página de Pessoas</div>
+        <div className="desgn-pagina">Página de Pessoas</div>
     )
 }
 

@@ -12,7 +12,7 @@ export function AppRoutes() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/lancamentos" element={<Lancamentos />} />
-                <Route path="/pessoas" element={<Pessoas />} />
+               /**<Route path="/pessoas" element={<Pessoas />} />*/
             </Routes>
         </BrowserRouter>
     );

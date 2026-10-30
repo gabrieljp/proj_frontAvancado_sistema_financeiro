@@ -1,6 +1,6 @@
 const Lancamentos = () => {
     return (
-        <div>Página de Lancamentos</div>
+        <div className="desgn-pagina">Página de Lancamentos</div>
     )
 }
 

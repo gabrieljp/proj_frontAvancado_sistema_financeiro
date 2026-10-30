@@ -1,6 +1,8 @@
+import '../App.css';
+
 const Home = () => {
     return (
-        <div>Página de Home</div>
+        <div className="desgn-pagina">Página de Home</div>
     )
 }
 
