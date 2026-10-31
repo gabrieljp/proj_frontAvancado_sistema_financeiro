@@ -1,16 +1,11 @@
-.desgn-pagina {
-    color: #1f2937;
-    border: solid 2px red;
-}
-
-
-
 nav {
     background-color: #1f2937;
     padding: 1rem 2rem;
     display: flex;
     gap: 3rem;
-    border: solid 1px red;
+    border-radius: 10px;
+    /*border: solid 1px red;*/
+
 }
 
 nav a {
@@ -24,7 +19,24 @@ nav a:hover {
     color: #60a5fa;
 }
 
-.home-container {
+.app-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: calc(100vh - 160px);
+    /* Garante que o rodapé fique embaixo */
+}
+
+.app-footer {
+    background-color: #1f2937;
+    color: #9ca3af;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    border-radius: 10px;
+}
+
+.home-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,25 +46,29 @@ nav a:hover {
     /*border: solid 5px red;*/
 }
 
-.home-card {
-    background: #ffffff;
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
+.lancamentos-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    /*border: solid 5px red;*/
 }
 
-.home-btn {
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
+.pessoas-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    /*border: solid 5px red;*/
 }
 
-.home-btn:hover {
-    background-color: #1d4ed8;
+.gamificacao-footer {
+    width: 50px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 8px;
 }
