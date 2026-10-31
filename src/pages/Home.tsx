@@ -2,7 +2,9 @@ import '../App.css';
 
 const Home = () => {
     return (
-        <div className="desgn-pagina">Página de Home</div>
+        <div className="home-container">
+            <div className="desgn-pagina">Página de Home</div>
+        </div>
     )
 }
 
