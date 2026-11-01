@@ -3,9 +3,7 @@ nav {
     padding: 1rem 2rem;
     display: flex;
     gap: 3rem;
-    border-radius: 10px;
-    /*border: solid 1px red;*/
-
+    border-radius: 0px;
 }
 
 nav a {
@@ -19,43 +17,57 @@ nav a:hover {
     color: #60a5fa;
 }
 
-.app-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    min-height: calc(100vh - 160px);
-    /* Garante que o rodapé fique embaixo */
-}
-
 .app-footer {
     background-color: #1f2937;
     color: #9ca3af;
     text-align: center;
     padding: 1rem;
     margin-top: auto;
-    border-radius: 10px;
+    border-radius: 0px;
+}
+
+/* Home ocupando 100% da largura de ponta a ponta, sem sobras nas laterais */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: calc(100vh - 160px);
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+
+    /* Imagem de fundo, degradê escuro e foco na calculadora */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/financas.jpg');
+    background-size: cover;
+    background-position: 20% center;
+    background-repeat: no-repeat;
 }
 
 .home-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    text-align: center;
-    /*border: solid 5px red;*/
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(8px);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
 }
 
-.lancamentos-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    text-align: center;
-    /*border: solid 5px red;*/
+.home-card h1 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    border: solid 3px green;
 }
 
+.home-card p {
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.lancamentos-card,
 .pessoas-card {
     display: flex;
     flex-direction: column;
@@ -63,7 +75,6 @@ nav a:hover {
     justify-content: center;
     padding: 4rem 2rem;
     text-align: center;
-    /*border: solid 5px red;*/
 }
 
 .gamificacao-footer {

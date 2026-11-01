@@ -11,7 +11,7 @@ export function AppRoutes() {
     return (
         <BrowserRouter>
             <Navbar />
-            <main className="app-container">
+            <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/lancamentos" element={<Lancamentos />} />
