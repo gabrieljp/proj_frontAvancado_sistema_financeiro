@@ -5,6 +5,8 @@ import Pessoas from '../pages/Pessoas'
 import { Navbar } from '../components/Navbar'
 import chapeu from '../assets/chapeu.png'
 import gamificacao from '../assets/gamificacao.png'
+import Login from '../pages/Login'
+import { Cadastro } from '../pages/Cadastro'
 
 
 export function AppRoutes() {
@@ -14,6 +16,8 @@ export function AppRoutes() {
             <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/cadastro" element={<Cadastro />} />
                     <Route path="/lancamentos" element={<Lancamentos />} />
                     <Route path="/pessoas" element={<Pessoas />} />
                 </Routes>

@@ -8,7 +8,7 @@ export function Home() {
         <div className="home-container">
             <div className="home-card">
                 <h1>SISTEMA FINANCEIRO</h1>
-                <p>Seja bem-vindo ao Sistema Financeiro. Escolha uma das opções abaixo para começar:</p>
+                <p>Escolha uma das opções abaixo para começar:</p>
 
                 <div className="home-actions">
                     <button
