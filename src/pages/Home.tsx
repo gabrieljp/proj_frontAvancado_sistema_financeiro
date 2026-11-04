@@ -1,17 +1,30 @@
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import financas from '../assets/financas.jpg';
 
 export function Home() {
+    const navigate = useNavigate();
+
     return (
-        <div
-            className='home-container'
-            style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${financas})`
-            }}
-        >
+        <div className="home-container">
             <div className="home-card">
-                <h1>HOME CARD</h1>
-                <p>Visão Geral do sistema</p>
+                <h1>SISTEMA FINANCEIRO</h1>
+                <p>Seja bem-vindo ao Sistema Financeiro. Escolha uma das opções abaixo para começar:</p>
+
+                <div className="home-actions">
+                    <button
+                        onClick={() => navigate('/login')}
+                        className="btn-login"
+                    >
+                        Entrar
+                    </button>
+
+                    <button
+                        onClick={() => navigate('/cadastro')}
+                        className="btn-cadastro"
+                    >
+                        Cadastrar
+                    </button>
+                </div>
             </div>
         </div>
     );
