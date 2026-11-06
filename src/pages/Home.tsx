@@ -1,33 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import '../App.css';
+import { Typography, Paper } from '@mui/material';
 
-export function Home() {
-    const navigate = useNavigate();
-
+export default function Home() {
     return (
-        <div className="home-container">
-            <div className="home-card">
-                <h1>SISTEMA FINANCEIRO</h1>
-                <p>Escolha uma das opções abaixo para começar:</p>
-
-                <div className="home-actions">
-                    <button
-                        onClick={() => navigate('/login')}
-                        className="btn-login"
-                    >
-                        Entrar
-                    </button>
-
-                    <button
-                        onClick={() => navigate('/cadastro')}
-                        className="btn-cadastro"
-                    >
-                        Cadastrar
-                    </button>
-                </div>
-            </div>
-        </div>
+        <Paper sx={{ p: 4 }}>
+            <Typography variant="h4" gutterBottom>Sistema Financeiro</Typography>
+            <Typography>Controle de receitas, despesas e pessoas em um só lugar.</Typography>
+        </Paper>
     );
 }
-
-export default Home;

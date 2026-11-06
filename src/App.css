@@ -1,20 +1,72 @@
-nav {
+.navbar-container {
     background-color: #1f2937;
     padding: 1rem 2rem;
     display: flex;
-    gap: 3rem;
-    border-radius: 0px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
 }
 
-nav a {
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-links a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
 }
 
-nav a:hover {
+.navbar-links a:hover {
     color: #60a5fa;
+}
+
+/* Estilos para os botões compactos da Navbar */
+.btn-nav-login {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #4b5563;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-nav-login:hover {
+    background-color: #374151;
+    border-color: #6b7280;
+}
+
+.btn-nav-cadastro {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-nav-cadastro:hover {
+    background-color: #2563eb;
+}
+
+.btn-nav-sair {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-nav-sair:hover {
+    background-color: #dc2626;
 }
 
 .app-footer {
@@ -40,7 +92,7 @@ nav a:hover {
     border-radius: 0;
 
     /* Imagem de fundo, degradê escuro e foco na calculadora */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/financas.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/fundoTec.jpg');
     background-size: cover;
     background-position: 20% center;
     background-repeat: no-repeat;
