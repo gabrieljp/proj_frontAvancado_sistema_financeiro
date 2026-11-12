@@ -1,122 +1,109 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useCallback, useEffect, useState } from "react";
+import type { FormEvent } from "react";
+import { api, ApiError, refreshCsrf } from "./api";
+import { Brand, Field, Icon } from "./components";
+import { message } from "./format";
+import { Workspace } from "./Workspace";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+  const [user, setUser] = useState<string | null>(null);
+  const [checking, setChecking] = useState(true);
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const expire = useCallback(() => setUser(null), []);
+  useEffect(() => {
+    api<{ usuario: string }>("/sessao")
+      .then((s) => setUser(s.usuario))
+      .catch((e) => {
+        if (!(e instanceof ApiError && e.status === 401)) setError(message(e));
+      })
+      .finally(() => setChecking(false));
+  }, []);
+  async function login(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setBusy(true);
+    setError("");
+    const form = new FormData(e.currentTarget);
+    try {
+      await refreshCsrf();
+      await api("/login", {
+        method: "POST",
+        body: new URLSearchParams({
+          username: String(form.get("usuario")),
+          password: String(form.get("senha")),
+        }),
+      });
+      await refreshCsrf();
+      const session = await api<{ usuario: string }>("/sessao");
+      setUser(session.usuario);
+    } catch (err) {
+      setError(message(err));
+    } finally {
+      setBusy(false);
+    }
+  }
+  if (checking)
+    return (
+      <div className="loading" role="status">
+        Conectando ao Financeiro…
+      </div>
+    );
+  if (!user)
+    return (
+      <main className="login-page">
+        <div className="login-story">
+          <Brand />
+          <div>
+            <span className="eyebrow">CLAREZA PARA CADA ESCOLHA</span>
+            <h1>
+              Suas finanças,
+              <br />
+              em perspectiva.
+            </h1>
+            <p>
+              Organize pessoas, acompanhe movimentos e tenha uma visão clara do
+              seu dinheiro.
+            </p>
+          </div>
+          <small>Sistema de gestão financeira · Projeto acadêmico</small>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
+        <div className="login-panel">
+          <form onSubmit={login}>
+            <span className="eyebrow">BEM-VINDO AO SEU ESPAÇO</span>
+            <h2>Acesse sua conta</h2>
+            <p>Entre para gerenciar seus lançamentos.</p>
+            {error && (
+              <div className="alert error" role="alert">
+                {error}
+              </div>
+            )}
+            <Field label="Usuário">
+              <input
+                name="usuario"
+                required
+                autoComplete="username"
+                autoFocus
+              />
+            </Field>
+            <Field label="Senha">
+              <input
+                name="senha"
+                type="password"
+                required
+                autoComplete="current-password"
+              />
+            </Field>
+            <button className="primary" disabled={busy}>
+              {busy ? "Entrando…" : "Entrar no sistema"} <Icon name="up" />
+            </button>
+            <small className="login-note">
+              Credenciais da versão de teste no README do projeto.
+            </small>
+          </form>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </main>
+    );
+  return <Workspace user={user} expire={expire} />;
 }
-
-export default App
+export default App;
