@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
     Typography, CircularProgress, Alert, Table, TableHead, TableRow,
-    TableCell, TableBody, Paper, Chip, Box, TableContainer,
+    TableCell, TableBody, Paper, Chip, Box, TableContainer, Button,
 } from '@mui/material';
 import {
     listarLancamentos, listarPessoas, listarCategorias,
@@ -41,7 +42,12 @@ export default function Lancamentos() {
 
     return (
         <>
-            <Typography variant="h4" gutterBottom>Lançamentos</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Typography variant="h4">Lançamentos</Typography>
+                <Button variant="contained" component={RouterLink} to="/lancamentos/novo">
+                    Novo lançamento
+                </Button>
+            </Box>
 
             {lancamentos.length === 0 ? (
                 <Alert severity="info">Nenhum lançamento cadastrado.</Alert>
