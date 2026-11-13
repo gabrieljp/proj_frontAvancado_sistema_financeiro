@@ -9,3 +9,6 @@ export const listarPessoas = () =>
 
 export const listarCategorias = () =>
     api.get<Categoria[]>('/categorias').then((r) => r.data);
+
+export const criarLancamento = (dados: Omit<Lancamento, 'id'>) =>
+    api.post<Lancamento>('/lancamentos', dados).then((r) => r.data);

@@ -149,7 +149,7 @@ export default function LancamentoForm() {
                     rows={3}
                 />
 
-                <Stack direction="row" spacing={2} justifyContent="flex-end">
+                <Stack direction="row" spacing={2} sx={{ justifyContent: 'flex-end' }}>
                     <Button onClick={() => navigate('/lancamentos')}>Cancelar</Button>
                     <Button variant="contained" onClick={handleSubmit} disabled={salvando}>
                         {salvando ? 'Salvando...' : 'Salvar'}
