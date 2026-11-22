@@ -8,6 +8,7 @@ import {
     listarLancamentos, listarPessoas, listarCategorias,
 } from '../services/lancamentoService';
 import type { Lancamento, Pessoa, Categoria } from '../types';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 export default function Lancamentos() {
     const [lancamentos, setLancamentos] = useState<Lancamento[]>([]);
@@ -15,6 +16,7 @@ export default function Lancamentos() {
     const [categorias, setCategorias] = useState<Categoria[]>([]);
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         Promise.all([listarLancamentos(), listarPessoas(), listarCategorias()])
@@ -55,7 +57,12 @@ export default function Lancamentos() {
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
-                            <TableRow>
+                            <TableRow
+                                key={l.id}
+                                hover
+                                sx={{ cursor: 'pointer' }}
+                                onClick={() => navigate(`/lancamentos/${l.id}`)}
+                            >
                                 <TableCell>Descrição</TableCell>
                                 <TableCell>Pessoa</TableCell>
                                 <TableCell>Categoria</TableCell>

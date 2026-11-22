@@ -5,6 +5,7 @@ import Lancamentos from '../pages/Lancamentos';
 import LancamentoForm from '../pages/LancamentoForm';
 import Pessoas from '../pages/Pessoas';
 import Sobre from '../pages/Sobre';
+import LancamentoDetalhe from '../pages/LancamentoDetalhe';
 
 export function AppRoutes() {
     return (
