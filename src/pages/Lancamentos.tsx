@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
     Typography, CircularProgress, Alert, Table, TableHead, TableRow,
     TableCell, TableBody, Paper, Chip, Box, TableContainer, Button,
@@ -10,6 +10,8 @@ import {
 import type { Lancamento, Pessoa, Categoria } from '../types';
 
 export default function Lancamentos() {
+    const navigate = useNavigate();
+
     const [lancamentos, setLancamentos] = useState<Lancamento[]>([]);
     const [pessoas, setPessoas] = useState<Pessoa[]>([]);
     const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -66,7 +68,12 @@ export default function Lancamentos() {
                         </TableHead>
                         <TableBody>
                             {lancamentos.map((l) => (
-                                <TableRow key={l.id} hover>
+                                <TableRow
+                                    key={l.id}
+                                    hover
+                                    sx={{ cursor: 'pointer' }}
+                                    onClick={() => navigate(`/lancamentos/${l.id}`)}
+                                >
                                     <TableCell>{l.descricao}</TableCell>
                                     <TableCell>{nomePessoa(l.pessoaId)}</TableCell>
                                     <TableCell>{nomeCategoria(l.categoriaId)}</TableCell>

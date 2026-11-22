@@ -12,3 +12,9 @@ export const listarCategorias = () =>
 
 export const criarLancamento = (dados: Omit<Lancamento, 'id'>) =>
     api.post<Lancamento>('/lancamentos', dados).then((r) => r.data);
+
+export const buscarLancamento = (id: string) =>
+    api.get<Lancamento>(`/lancamentos/${id}`).then((r) => r.data);
+
+export const excluirLancamento = (id: string) =>
+    api.delete(`/lancamentos/${id}`);
