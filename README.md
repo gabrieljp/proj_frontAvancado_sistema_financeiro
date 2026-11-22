@@ -1,3 +1,26 @@
+# Sistema Financeiro - Faculdade UNIESP
+
+# 💰 Sistema Financeiro - Front-end Avançado
+
+Projeto de um sistema web para gestão financeira, desenvolvido no âmbito da disciplina de **Front-end Avançado** da **Faculdade UNIESP**. 
+
+A aplicação foi estruturada com foco em boas práticas de desenvolvimento de software moderno, utilizando uma stack robusta baseada em **TypeScript**, **React**, **Vite**, **HTML5** e **CSS**, com roteamento dinâmico e controle de acesso.
+
+---
+
+## 👥 Integrantes da Equipe
+
+| Nome | GitHub |
+| **Gabriel Marcos Ferreira de Oliveira** | [@gabrieljp](https://github.com/gabrieljp) |
+| *[Nome 2]* | *[Link do GitHub]* |
+| *[Nome 3]* | *[Link do GitHub]* |
+| *[Nome 4]* | *[Link do GitHub]* |
+
+---
+
+## 🚀
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
