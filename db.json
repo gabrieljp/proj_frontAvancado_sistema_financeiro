@@ -15,6 +15,10 @@
     {
       "id": "4",
       "nome": "Moradia"
+    },
+    {
+      "id": "5",
+      "nome": "Lazer"
     }
   ],
   "pessoas": [
