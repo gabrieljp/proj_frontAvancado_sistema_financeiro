@@ -8,6 +8,39 @@ A aplicação foi estruturada com foco em boas práticas de desenvolvimento de s
 
 ---
 
+## Executar o projeto
+
+Instale as dependências com `npm ci`. Depois, mantenha dois terminais abertos na raiz do projeto:
+
+```bash
+# Terminal 1: interface
+npm run dev
+
+# Terminal 2: API simulada (porta 3001)
+npm run api
+```
+
+Abra o endereço informado pelo Vite, normalmente `http://localhost:5173`.
+Para verificar o código, execute `npm run build` e `npm run lint`.
+
+## Contribuição da branch feature/Lucas
+
+A tela **Pessoas** permite listar e buscar clientes/fornecedores, filtrar por situação,
+cadastrar e editar pessoas com endereço completo e ativar/inativar sem apagar o histórico.
+Nome, logradouro, número, bairro, CEP, cidade e UF são obrigatórios; complemento é opcional.
+O CEP aceita oito dígitos com ou sem hífen. As alterações são gravadas na API existente (`db.json`).
+
+Para revisar: cadastre uma pessoa, edite o endereço, teste a busca e os filtros e inative/reative
+o cadastro. Em **Novo lançamento**, somente pessoas ativas devem aparecer. Recarregue a página
+para conferir a persistência. Se a API estiver desligada, a tela deve informar o erro e permitir
+tentar novamente sem perder os dados digitados no formulário.
+
+Essa contribuição mantém o layout, as rotas, os tipos e a API simulada da `main`.
+A seleção de pessoas ativas no formulário de lançamentos já existe no projeto;
+o `json-server` é uma API de desenvolvimento e não implementa validações de negócio no servidor.
+
+---
+
 ## 👥 Integrantes da Equipe
 
 | Nome | GitHub |
