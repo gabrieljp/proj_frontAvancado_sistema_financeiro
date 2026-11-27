@@ -8,6 +8,7 @@ import {
     listarPessoas, listarCategorias, criarLancamento,
 } from '../services/lancamentoService';
 import type { Pessoa, Categoria, TipoLancamento } from '../types';
+import { LoadingState } from '../components/LoadingState';
 
 export default function LancamentoForm() {
     const navigate = useNavigate();
@@ -68,13 +69,7 @@ export default function LancamentoForm() {
         }
     };
 
-    if (loading) {
-        return (
-            <Box sx={{ textAlign: 'center', py: 6 }}>
-                <CircularProgress />
-            </Box>
-        );
-    }
+    if (loading) return <LoadingState />;
 
     return (
         <Paper sx={{ p: 4, maxWidth: 600, mx: 'auto' }}>
