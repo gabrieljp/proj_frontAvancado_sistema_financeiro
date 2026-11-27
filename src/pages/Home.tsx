@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Typography, Alert, Stack, Box, CircularProgress } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 import { listarLancamentos } from '../services/lancamentoService';
 import { ResumoCard } from '../components/ResumoCard';
 import type { Lancamento } from '../types';
+import { LoadingState } from '../components/LoadingState';
+import { ErrorState } from '../components/ErrorState';
+
 
 export default function Home() {
     const [lancamentos, setLancamentos] = useState<Lancamento[]>([]);
@@ -16,15 +19,9 @@ export default function Home() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) {
-        return (
-            <Box sx={{ textAlign: 'center', py: 6 }}>
-                <CircularProgress />
-            </Box>
-        );
-    }
+    if (loading) return <LoadingState />;
+    if (erro) return <ErrorState mensagem={erro} />;
 
-    if (erro) return <Alert severity="error">{erro}</Alert>;
 
     const receitas = lancamentos
         .filter((l) => l.tipo === 'RECEITA')
