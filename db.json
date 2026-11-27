@@ -23,9 +23,8 @@
   ],
   "pessoas": [
     {
-      "id": "1",
-      "nome": "Maria Souza",
-      "ativo": true,
+      "nome": "Maria Sousa",
+      "ativo": false,
       "endereco": {
         "logradouro": "Rua das Flores",
         "numero": "120",
@@ -34,7 +33,8 @@
         "cep": "58000-000",
         "cidade": "João Pessoa",
         "estado": "PB"
-      }
+      },
+      "id": "1"
     },
     {
       "id": "2",
@@ -49,6 +49,34 @@
         "cidade": "João Pessoa",
         "estado": "PB"
       }
+    },
+    {
+      "nome": "Gabriel Marcos",
+      "ativo": true,
+      "endereco": {
+        "logradouro": "rua Das armas",
+        "numero": "00",
+        "complemento": "",
+        "bairro": "Centro",
+        "cep": "58000000",
+        "cidade": "areia",
+        "estado": "PB"
+      },
+      "id": "yUvOSGpRubw"
+    },
+    {
+      "nome": "jose dirceu",
+      "ativo": true,
+      "endereco": {
+        "logradouro": "Central",
+        "numero": "0102",
+        "complemento": "",
+        "bairro": "carapibus",
+        "cep": "58015-430",
+        "cidade": "cuite",
+        "estado": "PB"
+      },
+      "id": "tE3Rt0eYHcs"
     }
   ],
   "lancamentos": [
