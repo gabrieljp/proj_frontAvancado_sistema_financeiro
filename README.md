@@ -1,131 +1,86 @@
-# Sistema Financeiro - Faculdade UNIESP
+💰 Sistema Financeiro
 
-# 💰 Sistema Financeiro - Front-end Avançado
+Projeto desenvolvido para a 2ª Avaliação da disciplina Tecnologia para Frontend Avançado (Sistemas para Internet, 4º período) do Centro Universitário UNIESP, semestre 2026.2. Professor: Álekiss Manço de Mélo.
 
-Projeto de um sistema web para gestão financeira, desenvolvido no âmbito da disciplina de **Front-end Avançado** da **Faculdade UNIESP**. 
+O sistema permite controlar receitas e despesas, cadastrar pessoas (clientes e fornecedores) com endereço e acompanhar o saldo em um painel resumido. O front-end segue o modelo de domínio definido nos diagramas UML do projeto (Lançamento, Pessoa, Endereço e Categoria).
 
-A aplicação foi estruturada com foco em boas práticas de desenvolvimento de software moderno, utilizando uma stack robusta baseada em **TypeScript**, **React**, **Vite**, **HTML5** e **CSS**, com roteamento dinâmico e controle de acesso.
+👥 Integrantes da equipe
+Nome completo	GitHub
+Gabriel Marcos Ferreira de Oliveira	@gabrieljp
+Lucas Custa (completar com o nome completo)	[link do GitHub]
+Gustavo (completar sobrenome)	[link do GitHub]
+Miguel (completar sobrenome)	[link do GitHub]
 
----
+Cada integrante desenvolveu em sua própria branch (feature/nome) e integrou na main por Pull Request.
 
-## Executar o projeto
+✨ Funcionalidades
+Home (dashboard): total de receitas, despesas e saldo, calculados a partir dos lançamentos.
+Lançamentos:
+lista com tipo (receita/despesa), pessoa, categoria, vencimento e valor;
+cadastro com validação (somente pessoas ativas podem receber lançamentos);
+tela de detalhes (/lancamentos/:id) com exclusão mediante confirmação.
+Pessoas:
+lista com busca por nome e filtro por situação;
+cadastro e edição com endereço completo e preenchimento automático pelo CEP (API ViaCEP);
+ativar/inativar sem apagar o histórico de lançamentos.
+Sobre: descrição do projeto e da equipe.
+Experiência de uso: estados de carregamento e de erro reutilizáveis, mensagens de sucesso e layout responsivo.
+🛠️ Tecnologias
+React + TypeScript + Vite
+React Router (rotas e navegação)
+Material UI (MUI) (biblioteca de componentes)
+axios (requisições HTTP)
+json-server (API simulada local, porta 3001)
+ViaCEP (API externa de consulta de CEP)
+📁 Estrutura de pastas
+src/
+├── components/   componentes reutilizáveis (AppLayout, ResumoCard, LoadingState, ErrorState, PessoaForm)
+├── pages/        telas (Home, Lancamentos, LancamentoForm, LancamentoDetalhe, Pessoas, Sobre)
+├── routes/       definição das rotas
+├── services/     acesso às APIs (api.ts, lancamentoService.ts, pessoaService.ts)
+└── types/        interfaces TypeScript baseadas no UML
+db.json           dados da API simulada (categorias, pessoas, lançamentos)
+🚀 Como executar
 
-Instale as dependências com `npm ci`. Depois, mantenha dois terminais abertos na raiz do projeto:
+Requisitos: Node.js instalado.
 
-```bash
+bash
+# 1. instalar as dependências
+npm install
+
+Mantenha dois terminais abertos na raiz do projeto:
+
+bash
 # Terminal 1: interface
 npm run dev
 
 # Terminal 2: API simulada (porta 3001)
 npm run api
-```
 
-Abra o endereço informado pelo Vite, normalmente `http://localhost:5173`.
-Para verificar o código, execute `npm run build` e `npm run lint`.
+Abra o endereço informado pelo Vite, normalmente http://localhost:5173.
 
-## Contribuição da branch feature/Lucas
+Para verificar o código:
 
-A tela **Pessoas** permite listar e buscar clientes/fornecedores, filtrar por situação,
-cadastrar e editar pessoas com endereço completo e ativar/inativar sem apagar o histórico.
-Nome, logradouro, número, bairro, CEP, cidade e UF são obrigatórios; complemento é opcional.
-O CEP aceita oito dígitos com ou sem hífen. As alterações são gravadas na API existente (`db.json`).
+bash
+npm run build
+npm run lint
 
-Para revisar: cadastre uma pessoa, edite o endereço, teste a busca e os filtros e inative/reative
-o cadastro. Em **Novo lançamento**, somente pessoas ativas devem aparecer. Recarregue a página
-para conferir a persistência. Se a API estiver desligada, a tela deve informar o erro e permitir
-tentar novamente sem perder os dados digitados no formulário.
+Se a API não estiver rodando, as telas exibem uma mensagem de erro em vez de dados.
 
-Essa contribuição mantém o layout, as rotas, os tipos e a API simulada da `main`.
-A seleção de pessoas ativas no formulário de lançamentos já existe no projeto;
-o `json-server` é uma API de desenvolvimento e não implementa validações de negócio no servidor.
-
----
-
-## 👥 Integrantes da Equipe
-
-| Nome | GitHub |
-| **Gabriel Marcos Ferreira de Oliveira** | [@gabrieljp](https://github.com/gabrieljp) |
-| *[Nome 2]* | *[Link do GitHub]* |
-| *[Nome 3]* | *[Link do GitHub]* |
-| *[Nome 4]* | *[Link do GitHub]* |
-
----
-
-## 🚀
-
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+🧭 Rotas
+Rota	Tela
+/	Home com resumo financeiro
+/lancamentos	Lista de lançamentos
+/lancamentos/novo	Novo lançamento
+/lancamentos/:id	Detalhes do lançamento
+/pessoas	Gestão de pessoas
+/sobre	Sobre o projeto
+🧪 Como revisar
+Em Pessoas, cadastre uma pessoa digitando um CEP real (ex.: 58015-430) e confira o endereço preenchido automaticamente. Edite, filtre e inative/reative o cadastro.
+Em Novo lançamento, confirme que somente pessoas ativas aparecem no seletor.
+Salve uma receita e uma despesa e confira os totais na Home.
+Abra um lançamento pela lista, veja os detalhes e exclua-o.
+Pare a API (Ctrl + C no terminal do npm run api) e recarregue as telas para ver o tratamento de erro.
+📝 Observações
+O json-server é uma API de desenvolvimento: não implementa validações de negócio no servidor, então as regras (como "somente pessoa ativa") são aplicadas no front-end.
+O projeto foi construído a partir dos diagramas UML (classes, casos de uso e sequência) da documentação do sistema.
