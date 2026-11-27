@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
-    Typography, CircularProgress, Alert, Table, TableHead, TableRow,
+    Typography, Alert, Table, TableHead, TableRow,
     TableCell, TableBody, Paper, Chip, Box, TableContainer, Button,
 } from '@mui/material';
 import {
     listarLancamentos, listarPessoas, listarCategorias,
 } from '../services/lancamentoService';
 import type { Lancamento, Pessoa, Categoria } from '../types';
+import { LoadingState } from '../components/LoadingState';
+import { ErrorState } from '../components/ErrorState';
 
 export default function Lancamentos() {
     const navigate = useNavigate();
@@ -32,15 +34,8 @@ export default function Lancamentos() {
     const nomePessoa = (id: string) => pessoas.find((p) => p.id === id)?.nome ?? '—';
     const nomeCategoria = (id: string) => categorias.find((c) => c.id === id)?.nome ?? '—';
 
-    if (loading) {
-        return (
-            <Box sx={{ textAlign: 'center', py: 6 }}>
-                <CircularProgress />
-            </Box>
-        );
-    }
-
-    if (erro) return <Alert severity="error">{erro}</Alert>;
+    if (loading) return <LoadingState />;
+    if (erro) return <ErrorState mensagem={erro} />;
 
     return (
         <>

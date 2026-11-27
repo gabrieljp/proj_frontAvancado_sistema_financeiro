@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
-    Typography, Paper, Stack, Button, Alert, CircularProgress, Box, Chip,
+    Typography, Paper, Stack, Button, Chip,
     Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions,
 } from '@mui/material';
 import {
     buscarLancamento, excluirLancamento, listarPessoas, listarCategorias,
 } from '../services/lancamentoService';
 import type { Lancamento, Pessoa, Categoria } from '../types';
+import { LoadingState } from '../components/LoadingState';
+import { ErrorState } from '../components/ErrorState';
 
 export default function LancamentoDetalhe() {
     const { id } = useParams<{ id: string }>();
@@ -47,22 +49,14 @@ export default function LancamentoDetalhe() {
         }
     };
 
-    if (loading) {
-        return (
-            <Box sx={{ textAlign: 'center', py: 6 }}>
-                <CircularProgress />
-            </Box>
-        );
-    }
+    if (loading) return <LoadingState />;
 
     if (erro || !lancamento) {
         return (
-            <Stack spacing={2}>
-                <Alert severity="error">{erro ?? 'Lançamento não encontrado.'}</Alert>
-                <Box>
-                    <Button onClick={() => navigate('/lancamentos')}>Voltar para a lista</Button>
-                </Box>
-            </Stack>
+            <ErrorState
+                mensagem={erro ?? 'Lançamento não encontrado.'}
+                onVoltar={() => navigate('/lancamentos')}
+            />
         );
     }
 
