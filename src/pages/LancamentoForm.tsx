@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     Typography, Paper, TextField, MenuItem, Button, Stack, Alert,
-    CircularProgress, Box,
 } from '@mui/material';
 import {
     listarPessoas, listarCategorias, criarLancamento,
